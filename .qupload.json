@@ -1,5 +1,5 @@
 {
-	"src_dir": "#TRAVIS_BUILD_DIR#/build",
+	"src_dir": "build",
 	"bucket": "#QINIU_BUCKET#",
 	"overwrite": true,
 	"check_exists": true,

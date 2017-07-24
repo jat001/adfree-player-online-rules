@@ -4,8 +4,8 @@ install:
 
 before_script:
   - ./qshell account $QINIU_AK $QINIU_SK
-  - sed -i "s^#TRAVIS_BUILD_DIR#^$TRAVIS_BUILD_DIR^;s^#QINIU_BUCKET#^$QINIU_BUCKET^" .qupload.json
+  - sed -i "s/#QINIU_BUCKET#/$QINIU_BUCKET/" .qupload.json
 
 script:
   - ./build.py $HOSTSITE
-  - ./qshell qupload $(ls -1 | wc -l) .qupload.json
+  - ./qshell qupload $(ls -1 build | wc -l) .qupload.json
