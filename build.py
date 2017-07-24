@@ -16,7 +16,7 @@ def safe_list_get(l, i, d=None):
 
 
 def main():
-    hostsite = safe_list_get(sys.argv, 1, 'http://127.0.0.1')
+    hostsite = safe_list_get(sys.argv, 1, 'http://127.0.0.1').rstrip('/')
     if not hostsite.startswith('http'):
         hostsite = 'http://' + hostsite
 

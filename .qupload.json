@@ -1,6 +1,7 @@
 {
-	"src_dir": "build",
+	"src_dir": "build/",
 	"bucket": "#QINIU_BUCKET#",
+	"key_prefix": "rules/",
 	"overwrite": true,
 	"check_exists": true,
 	"check_hash": true,
