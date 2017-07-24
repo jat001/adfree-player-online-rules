@@ -5,6 +5,7 @@
 import os
 import io
 import sys
+from time import time
 from base64 import b64encode
 
 
@@ -28,12 +29,13 @@ def main():
 
     for i in os.listdir(rules_dir):
         name, ext = i.rsplit('.', 1)
-        if ext != 'json':
-            continue
 
         with io.open(os.path.join(rules_dir, i), encoding='utf-8') as rule, \
-                io.open(os.path.join(build_dir, name), 'w', encoding='utf-8') as build:
+                open(os.path.join(build_dir, name), 'w') as build:
             build.write(b64encode(rule.read().replace('#hostsite#', hostsite).encode('utf-8')).decode('ascii'))
+
+    with open(os.path.join(build_dir, 'update'), 'w') as f:
+        f.write(str(int(round(time() * 1000))))
 
 
 if __name__ == '__main__':
