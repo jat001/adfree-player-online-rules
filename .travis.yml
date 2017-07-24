@@ -8,4 +8,4 @@ before_script:
 
 script:
   - ./build.py $HOSTSITE
-  - ./qshell qupload $(ls -1 build | wc -l) .qupload.json
+  - travis_retry ./qshell qupload $(ls -1 build | wc -l) .qupload.json
