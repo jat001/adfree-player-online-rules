@@ -4,16 +4,8 @@ install:
 
 before_script:
   - ./qshell account $QINIU_AK $QINIU_SK
-  - |-
-    cat <<EOF > qupload.json "{
-      \"src_dir\": \"$TRAVIS_BUILD_DIR/build\",
-      \"bucket\": \"$QINIU_BUCKET\",
-      \"overwrite\": true,
-      \"check_exists\": true,
-      \"check_hash\": true,
-      \"rescan_local\": true
-    }" EOF
+  - sed -i "s/#TRAVIS_BUILD_DIR#/$TRAVIS_BUILD_DIR/;s/#QINIU_BUCKET#/$QINIU_BUCKET/" .qupload.json
 
 script:
   - ./build.py $HOSTSITE
-  - ./qshell qupload $(ls -1 | wc -l) qupload.json
+  - ./qshell qupload $(ls -1 | wc -l) .qupload.json
