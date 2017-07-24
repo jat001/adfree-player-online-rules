@@ -1,0 +1,21 @@
+install:
+  - wget -O qshell http://devtools.qiniu.com/2.0.9/qshell-linux-x64
+  - chmod +x qshell
+
+before_script:
+  - ./qshell account $QINIU_AK $QINIU_SK
+  - |
+    cat <<EOF > qupload.json
+    {
+      "src_dir": "$TRAVIS_BUILD_DIR/build",
+      "bucket": "$QINIU_BUCKET",
+      "overwrite": true,
+      "check_exists": true,
+      "check_hash": true,
+      "rescan_local": true
+    }
+    EOF
+
+script:
+  - ./build.py $HOSTSITE
+  - ./qshell qupload $(ls -1 | wc -l) qupload.json

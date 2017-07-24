@@ -17,6 +17,9 @@ def safe_list_get(l, i, d=None):
 
 def main():
     hostsite = safe_list_get(sys.argv, 1, 'http://127.0.0.1')
+    if not hostsite.startswith('http'):
+        hostsite = 'http://' + hostsite
+
     root_dir = safe_list_get(sys.argv, 2, os.path.dirname(os.path.abspath(__file__)))
     rules_dir = os.path.join(root_dir, 'rules')
     build_dir = os.path.join(root_dir, 'build')
