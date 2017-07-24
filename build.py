@@ -23,6 +23,8 @@ def main():
     root_dir = safe_list_get(sys.argv, 2, os.path.dirname(os.path.abspath(__file__)))
     rules_dir = os.path.join(root_dir, 'rules')
     build_dir = os.path.join(root_dir, 'build')
+    if not os.path.isdir(build_dir):
+        os.mkdir(build_dir)
 
     for i in os.listdir(rules_dir):
         name, ext = i.rsplit('.', 1)
