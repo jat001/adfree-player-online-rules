@@ -2,7 +2,7 @@
     {
         "name": "referer_youku",
         "find": "f\\.youku\\.com",
-        "replace": "https?://player.youku.com/player.php",
+        "replace": "(https?:)?//player.youku.com/player.php",
         "extra": ""
     },
     {
