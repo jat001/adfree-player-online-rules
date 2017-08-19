@@ -1,11 +1,11 @@
 #!/bin/bash
 # author: chat@jat.email
 
-mkdir build lists
-
 HOSTSITE=${HOSTSITE:-127.0.0.1}
 HOSTSITE=${HOSTSITE%/}
 [ "${HOSTSITE:0:4}" != 'http' ] && HOSTSITE="http://$HOSTSITE"
+
+mkdir build lists
 
 for f in rules/*; do
     t=${f#rules/}; t=${t%.*}
