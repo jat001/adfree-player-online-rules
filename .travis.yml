@@ -3,4 +3,4 @@ install:
   - chmod +x qshell
 
 script:
-  - ./qiniu.sh
+  - ./build.sh
