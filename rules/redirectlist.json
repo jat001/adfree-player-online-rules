@@ -1,13 +1,13 @@
 [
     {
         "name": "youkujson",
-        "find": "(https?:)?//val[fcopb]\\.atm\\.youku\\.com/v[fcopb]",
+        "find": "https?://val[fcopb]\\.atm\\.youku\\.com/v[fcopb]",
         "replace": "about:blank",
         "extra": "adkillrule"
     },
     {
         "name": "youkuloader",
-        "find": "(https?:)?//static\\.youku\\.com(/v[\\d.]+)?/v/swf/([^/]+/)?loaders?\\.swf",
+        "find": "https?://static\\.youku\\.com(/v[\\d.]+)?/v/swf/([^/]+/)?loaders?\\.swf",
         "exfind": "(bili|acfun)",
         "replace": "#hostsite#/loader.swf",
         "css": ".danmuoff .vpactionv5_iframe_wrap {top: auto !important;}",
@@ -15,7 +15,7 @@
     },
     {
         "name": "youkuplayer",
-        "find": "(https?:)?//static\\.youku\\.com(/v[\\d.]+)?/v/swf/([^/]+/)?player[^/.]*\\.swf",
+        "find": "https?://static\\.youku\\.com(/v[\\d.]+)?/v/swf/([^/]+/)?player[^/.]*\\.swf",
         "exfind": "(bili|acfun)",
         "replace": "#hostsite#/player.swf",
         "css": ".danmuoff .vpactionv5_iframe_wrap {top: auto !important;}",
