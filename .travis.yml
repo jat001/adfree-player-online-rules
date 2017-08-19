@@ -5,10 +5,9 @@ install:
 before_script:
   - ./qshell account $QINIU_AK $QINIU_SK
   - sed -i "s/#QINIU_BUCKET#/$QINIU_BUCKET/" .qupload.json
+  - sed -i "s^#HOSTSITE#^$HOSTSITE^" .cdnrefresh.txt
 
 script:
   - ./build.py $HOSTSITE
-  - travis_retry ./qshell qupload -success-list success.txt -overwrite-list overwrite.txt $(ls -1 build | wc -l) .qupload.json
-  - sed -ri "s#[^\t]+\t#http://$HOSTSITE/#" success.txt overwrite.txt
-  - travis_retry ./qshell cdnrefresh success.txt
-  - travis_retry ./qshell cdnrefresh overwrite.txt
+  - travis_retry ./qshell qupload $(ls -1 build | wc -l) .qupload.json
+  - travis_retry ./qshell cdnrefresh -dirs .cdnrefresh.txt
