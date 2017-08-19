@@ -1,5 +1,5 @@
 #!/bin/bash
-# author: jat@chat.email
+# author: chat@jat.email
 
 ./build.py "$HOSTSITE"
 
@@ -16,5 +16,6 @@ done
 
 for f in list/*; do
     sed -ri "s#[^\t]+\t#$HOSTSITE/#" "$f"
-    ./qshell cdnrefresh "$f"
+    cat "$f"
+    while :; do ./qshell cdnrefresh "$f" && break; done
 done
